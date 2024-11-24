@@ -23,6 +23,7 @@ export const stepsData: Steps = {
     },
     "f30d3669-efc8-4ed6-8bd3-f406321a2a9f": {
       type: "operation",
+      nextStepId: "8b955624-964f-45a9-822a-576873353951",
     },
     "3d986a1f-ef92-4cf4-b1e4-6bc82adb65c5": {
       type: "condition",
@@ -33,6 +34,7 @@ export const stepsData: Steps = {
     },
     "6cb128cf-e159-4fc7-b8ee-857a87b57258": {
       type: "operation",
+      nextStepId: "6db61c4f-4f67-4ae1-bc42-4f9c395b2b61",
     },
     "6db61c4f-4f67-4ae1-bc42-4f9c395b2b61": {
       type: "joint",
@@ -41,6 +43,17 @@ export const stepsData: Steps = {
       type: "joint",
     },
     "ddabf2f9-3e11-47f4-b49e-f28de109246d": {
+      type: "joint",
+      nextStepId: "701effe1-d7a2-4ba3-bc28-e5e8aa870afc",
+    },
+    "701effe1-d7a2-4ba3-bc28-e5e8aa870afc": {
+      type: "condition",
+      nextStepId: "0eafeca3-09c3-430f-980f-9271f7765d69",
+      jointStepId: "0eafeca3-09c3-430f-980f-9271f7765d69",
+      ifStepId: "",
+      elseStepId: "",
+    },
+    "0eafeca3-09c3-430f-980f-9271f7765d69": {
       type: "joint",
       nextStepId: "7dfd1906-e78e-425c-9394-d1e3832d04f9",
     },

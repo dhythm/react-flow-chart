@@ -1,7 +1,7 @@
 import React from "react";
-import { VerticalLine } from "./VerticalLine";
 import { Step } from "./Step";
 import { stepsData } from "./utils/steps";
+import { AddStepLine } from "./AddStepLine";
 
 export const Steps: React.FC<{ stepId: string }> = ({ stepId }) => {
   const stepComponents: React.ReactNode[] = [];
@@ -14,9 +14,9 @@ export const Steps: React.FC<{ stepId: string }> = ({ stepId }) => {
     }
     stepComponents.push(<Step key={currentStepId} stepId={currentStepId} />);
     const nextStepId: string | undefined = currentStep.nextStepId;
-    if (nextStepId) {
+    if (nextStepId && currentStep.type !== "joint") {
       stepComponents.push(
-        <VerticalLine key={`${currentStepId}-${nextStepId}`} />
+        <AddStepLine key={`${currentStepId}-${nextStepId}`} />
       );
     }
     currentStepId = nextStepId;

@@ -3,11 +3,12 @@ import { HorizontalContainer } from "./HorizontalContainer";
 import { HorizontalLine } from "./HorizontalLine";
 import { SharpCurve } from "./SharpCurve";
 import { VerticalContainer } from "./VerticalContainer";
-import { VerticalLine } from "./VerticalLine";
 import { stepsData } from "./utils/steps";
 import { Steps } from "./Steps";
 import { StepBlock } from "./StepBlock";
 import { BLOCK_WIDTH } from "./utils/constants";
+import { AddStepLine } from "./AddStepLine";
+import { VerticalLine } from "./VerticalLine";
 
 export const ConditionStep: React.FC<{
   stepId: string;
@@ -28,14 +29,14 @@ export const ConditionStep: React.FC<{
           <StepBlock text={step.type} />
           <HorizontalLine />
         </HorizontalContainer>
-        <VerticalLine />
+        <AddStepLine />
         {ifStep ? <Steps stepId={ifStep.id} /> : <EmptyStep />}
         <VerticalLine />
         <BottomLine />
       </VerticalContainer>
       <VerticalContainer>
         <SharpCurve />
-        <VerticalLine />
+        <AddStepLine />
         {elseStep ? <Steps stepId={elseStep.id} /> : <EmptyStep />}
         <VerticalLine />
       </VerticalContainer>
