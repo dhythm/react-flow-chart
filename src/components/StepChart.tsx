@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import { Steps } from "./Steps";
+import { StepStateProvider } from "./StepStateProvider";
 
 export const StepChart = () => {
   return (
-    <Wrapper>
-      <Content>
-        <Steps stepId="a1a277ed-7355-4709-8587-2a4099b90d65" />
-      </Content>
-    </Wrapper>
+    <StepStateProvider>
+      <Wrapper>
+        <Content>
+          <Steps stepId="a1a277ed-7355-4709-8587-2a4099b90d65" />
+        </Content>
+      </Wrapper>
+    </StepStateProvider>
   );
 };
 

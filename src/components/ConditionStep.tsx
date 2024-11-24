@@ -3,19 +3,20 @@ import { HorizontalContainer } from "./HorizontalContainer";
 import { HorizontalLine } from "./HorizontalLine";
 import { SharpCurve } from "./SharpCurve";
 import { VerticalContainer } from "./VerticalContainer";
-import { stepsData } from "./utils/steps";
 import { Steps } from "./Steps";
 import { StepBlock } from "./StepBlock";
 import { BLOCK_WIDTH } from "./utils/constants";
 import { AddStepLine } from "./AddStepLine";
 import { VerticalLine } from "./VerticalLine";
+import { useStepState } from "./StepStateProvider";
 
 export const ConditionStep: React.FC<{
   stepId: string;
 }> = ({ stepId }) => {
-  const step = stepsData.steps[stepId];
+  const [stepState] = useStepState();
+  const step = stepState.steps[stepId];
 
-  const steps = Object.entries(stepsData.steps).map(([id, step]) => ({
+  const steps = Object.entries(stepState.steps).map(([id, step]) => ({
     id,
     ...step,
   }));

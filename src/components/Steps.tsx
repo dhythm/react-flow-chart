@@ -1,14 +1,15 @@
 import React from "react";
 import { Step } from "./Step";
-import { stepsData } from "./utils/steps";
 import { AddStepLine } from "./AddStepLine";
+import { useStepState } from "./StepStateProvider";
 
 export const Steps: React.FC<{ stepId: string }> = ({ stepId }) => {
   const stepComponents: React.ReactNode[] = [];
   let currentStepId: string | undefined = stepId;
+  const [stepState] = useStepState();
 
   while (currentStepId) {
-    const currentStep = stepsData.steps[currentStepId];
+    const currentStep = stepState.steps[currentStepId];
     if (!currentStep) {
       break;
     }

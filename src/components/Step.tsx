@@ -1,9 +1,10 @@
 import { ConditionStep } from "./ConditionStep";
 import { StepBlock } from "./StepBlock";
-import { stepsData } from "./utils/steps";
+import { useStepState } from "./StepStateProvider";
 
 export const Step: React.FC<{ stepId: string }> = ({ stepId }) => {
-  const step = stepsData.steps[stepId];
+  const [stepState] = useStepState();
+  const step = stepState.steps[stepId];
 
   if (!step) {
     return null;
