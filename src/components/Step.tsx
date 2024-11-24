@@ -1,10 +1,8 @@
 import { ConditionStep } from "./ConditionStep";
+import { StepBlock } from "./StepBlock";
 import { stepsData } from "./utils/steps";
 
-export const Step: React.FC<{ stepId: string; prevStepId: string }> = ({
-  stepId,
-  prevStepId,
-}) => {
+export const Step: React.FC<{ stepId: string }> = ({ stepId }) => {
   const step = stepsData.steps[stepId];
 
   if (!step) {
@@ -13,10 +11,10 @@ export const Step: React.FC<{ stepId: string; prevStepId: string }> = ({
 
   switch (step.type) {
     case "condition":
-      return <ConditionStep stepId={stepId} prevStepId={prevStepId} />;
+      return <ConditionStep stepId={stepId} />;
     case "joint":
       return null;
     default:
-      return <>{step.type}</>;
+      return <StepBlock text={step.type} />;
   }
 };

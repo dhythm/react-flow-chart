@@ -3,10 +3,7 @@ import { VerticalLine } from "./VerticalLine";
 import { Step } from "./Step";
 import { stepsData } from "./utils/steps";
 
-export const Steps: React.FC<{ stepId: string; prevStepId: string }> = ({
-  stepId,
-  //   prevStepId,
-}) => {
+export const Steps: React.FC<{ stepId: string }> = ({ stepId }) => {
   const stepComponents: React.ReactNode[] = [];
   let currentStepId: string | undefined = stepId;
 
@@ -15,13 +12,7 @@ export const Steps: React.FC<{ stepId: string; prevStepId: string }> = ({
     if (!currentStep) {
       break;
     }
-    stepComponents.push(
-      <Step
-        key={currentStepId}
-        stepId={currentStepId}
-        prevStepId={currentStep.prevId}
-      />
-    );
+    stepComponents.push(<Step key={currentStepId} stepId={currentStepId} />);
     const nextStepId: string | undefined = currentStep.nextStepId;
     if (nextStepId) {
       stepComponents.push(

@@ -5,7 +5,7 @@ export const StepChart = () => {
   return (
     <Wrapper>
       <Content>
-        <Steps stepId="a1a277ed-7355-4709-8587-2a4099b90d65" prevStepId="" />
+        <Steps stepId="a1a277ed-7355-4709-8587-2a4099b90d65" />
       </Content>
     </Wrapper>
   );

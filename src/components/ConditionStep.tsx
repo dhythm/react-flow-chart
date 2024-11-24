@@ -6,11 +6,12 @@ import { VerticalContainer } from "./VerticalContainer";
 import { VerticalLine } from "./VerticalLine";
 import { stepsData } from "./utils/steps";
 import { Steps } from "./Steps";
+import { StepBlock } from "./StepBlock";
+import { BLOCK_WIDTH } from "./utils/constants";
 
 export const ConditionStep: React.FC<{
   stepId: string;
-  prevStepId: string;
-}> = ({ stepId, prevStepId }) => {
+}> = ({ stepId }) => {
   const step = stepsData.steps[stepId];
 
   const steps = Object.entries(stepsData.steps).map(([id, step]) => ({
@@ -24,18 +25,18 @@ export const ConditionStep: React.FC<{
     <HorizontalContainer>
       <VerticalContainer>
         <HorizontalContainer>
-          <>{step.type}</>
+          <StepBlock text={step.type} />
           <HorizontalLine />
         </HorizontalContainer>
         <VerticalLine />
-        <Steps stepId={ifStep?.id ?? ""} prevStepId={stepId} />
+        {ifStep ? <Steps stepId={ifStep.id} /> : <EmptyStep />}
         <VerticalLine />
         <BottomLine />
       </VerticalContainer>
       <VerticalContainer>
         <SharpCurve />
         <VerticalLine />
-        <Steps stepId={elseStep?.id ?? ""} prevStepId={stepId} />
+        {elseStep ? <Steps stepId={elseStep.id} /> : <EmptyStep />}
         <VerticalLine />
       </VerticalContainer>
     </HorizontalContainer>
@@ -45,7 +46,11 @@ export const ConditionStep: React.FC<{
 const BottomLine = styled.div<{ color?: string }>`
   position: relative;
   right: 0;
-  left: 21px;
+  left: ${BLOCK_WIDTH / 2}px;
   height: 2px;
   background-color: #ffffff;
+`;
+
+const EmptyStep = styled.div`
+  width: ${BLOCK_WIDTH}px;
 `;
