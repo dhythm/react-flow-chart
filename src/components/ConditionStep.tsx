@@ -4,11 +4,22 @@ import { HorizontalLine } from "./HorizontalLine";
 import { SharpCurve } from "./SharpCurve";
 import { VerticalContainer } from "./VerticalContainer";
 import { VerticalLine } from "./VerticalLine";
+import { stepsData } from "./utils/steps";
+import { Steps } from "./Steps";
 
 export const ConditionStep: React.FC<{
-  step: unknown;
+  stepId: string;
   prevStepId: string;
-}> = ({ step, prevStepId }) => {
+}> = ({ stepId, prevStepId }) => {
+  const step = stepsData.steps[stepId];
+
+  const steps = Object.entries(stepsData.steps).map(([id, step]) => ({
+    id,
+    ...step,
+  }));
+  const ifStep = steps.find((s) => s.id === step.ifStepId);
+  const elseStep = steps.find((s) => s.id === step.elseStepId);
+
   return (
     <HorizontalContainer>
       <VerticalContainer>
@@ -17,14 +28,14 @@ export const ConditionStep: React.FC<{
           <HorizontalLine />
         </HorizontalContainer>
         <VerticalLine />
-        <>foo</>
+        <Steps stepId={ifStep?.id ?? ""} prevStepId={stepId} />
         <VerticalLine />
         <BottomLine />
       </VerticalContainer>
       <VerticalContainer>
         <SharpCurve />
         <VerticalLine />
-        <>bar</>
+        <Steps stepId={elseStep?.id ?? ""} prevStepId={stepId} />
         <VerticalLine />
       </VerticalContainer>
     </HorizontalContainer>
