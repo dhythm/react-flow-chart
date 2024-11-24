@@ -17,7 +17,11 @@ export const Steps: React.FC<{ stepId: string }> = ({ stepId }) => {
     const nextStepId: string | undefined = currentStep.nextStepId;
     if (nextStepId && currentStep.type !== "joint") {
       stepComponents.push(
-        <AddStepLine key={`${currentStepId}-${nextStepId}`} />
+        <AddStepLine
+          key={`${currentStepId}-${nextStepId}`}
+          prevStepId={currentStepId}
+          nextStepId={nextStepId}
+        />
       );
     }
     currentStepId = nextStepId;

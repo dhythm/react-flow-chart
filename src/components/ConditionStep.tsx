@@ -30,14 +30,20 @@ export const ConditionStep: React.FC<{
           <StepBlock text={step.type} />
           <HorizontalLine />
         </HorizontalContainer>
-        <AddStepLine />
+        <AddStepLine
+          prevStepId={stepId}
+          nextStepId={ifStep ? ifStep.id : step.jointStepId}
+        />
         {ifStep ? <Steps stepId={ifStep.id} /> : <EmptyStep />}
         <VerticalLine />
         <BottomLine />
       </VerticalContainer>
       <VerticalContainer>
         <SharpCurve />
-        <AddStepLine />
+        <AddStepLine
+          prevStepId={stepId}
+          nextStepId={elseStep ? elseStep.id : step.jointStepId}
+        />
         {elseStep ? <Steps stepId={elseStep.id} /> : <EmptyStep />}
         <VerticalLine />
       </VerticalContainer>
